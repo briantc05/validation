@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\UserTask;
 
 class UserTaskController extends Controller
 {
@@ -28,13 +29,20 @@ class UserTaskController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $request->validate([
             'task_name'     => 'required',
             'status'        => 'required',
             'description'   => 'required',
             'deadline'      => 'required|date',
         ]);
-
+        $user_task = new UserTask();
+        $user_task->task_name = $request['task_name'];
+        $user_task->status = $request['status'];
+        $user_task->description = $request['description'];
+        $user_task->deadline = $request['deadline'];
+        $user_task->save();
         return back()->with('success', 'Data saved successfully!.');
     }
 
