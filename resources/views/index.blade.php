@@ -38,6 +38,11 @@
                             </td>
                         </tr>
                         @endforeach
+                        <tr>
+                            <td colspan="8" class="txt-right">
+                                {!! $user_tasks->links() !!}
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
